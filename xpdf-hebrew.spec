@@ -58,6 +58,7 @@ fi
 umask 022
 grep -v 'ISO-8859-8\.unicodeMap' /etc/xpdfrc > /etc/xpdfrc.new
 grep -v 'Windows-1255\.unicodeMap' /etc/xpdfrc.new > /etc/xpdfrc
+rm -f /etc/xpdfrc.new
 
 %files
 %defattr(644,root,root,755)
