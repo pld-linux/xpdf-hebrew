@@ -1,5 +1,5 @@
-Summary:	ISO-8859-8 encoding support for xpdf
-Summary(pl):	Wsparcie kodowania ISO-8859-8 dla xpdf
+Summary:	ISO-8859-8 and Windows-1255 encoding support for xpdf
+Summary(pl):	Wsparcie kodowania ISO-8859-8 i Windows-1255 dla xpdf
 Name:		xpdf-hebrew
 Version:	1.0
 Release:	2
@@ -44,16 +44,20 @@ rm -rf $RPM_BUILD_ROOT
 umask 022
 if [ ! -f /etc/xpdfrc ]; then
 	echo 'unicodeMap	ISO-8859-8	/usr/share/xpdf/ISO-8859-8.unicodeMap' >> /etc/xpdfrc
+	echo 'unicodeMap	Windows-1255	/usr/share/xpdf/Windows-1255.unicodeMap' >> /etc/xpdfrc
 else
  if ! grep -q 'ISO-8859-8\.unicodeMap' /etc/xpdfrc; then
 	echo 'unicodeMap	ISO-8859-8	/usr/share/xpdf/ISO-8859-8.unicodeMap' >> /etc/xpdfrc
+ fi
+ if ! grep -q 'Windows-1255\.unicodeMap' /etc/xpdfrc; then
+	echo 'unicodeMap	Windows-1255	/usr/share/xpdf/Windows-1255.unicodeMap' >> /etc/xpdfrc
  fi
 fi
 
 %preun
 umask 022
 grep -v 'ISO-8859-8\.unicodeMap' /etc/xpdfrc > /etc/xpdfrc.new
-mv -f /etc/xpdfrc.new /etc/xpdfrc
+grep -v 'Windows-1255\.unicodeMap' /etc/xpdfrc.new > /etc/xpdfrc
 
 %files
 %defattr(644,root,root,755)
