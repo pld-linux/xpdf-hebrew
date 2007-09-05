@@ -2,7 +2,7 @@ Summary:	ISO-8859-8 and Windows-1255 encoding support for xpdf
 Summary(pl.UTF-8):	Wsparcie kodowania ISO-8859-8 i Windows-1255 dla xpdf
 Name:		xpdf-hebrew
 Version:	1.0
-Release:	4
+Release:	5
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.foolabs.com/pub/xpdf/%{name}.tar.gz
